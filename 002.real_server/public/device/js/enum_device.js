@@ -4,9 +4,18 @@ var audioinput = document.querySelector("select#audioinput");
 var audiooutput = document.querySelector("select#audiooutput");
 var videoinput = document.querySelector("select#videoinput");
 
-if(!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices){
-    console.log('enumerateDevices not supported!');
+if(!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices || !navigator.mediaDevices.getUserMedia){
+    console.log('enumerateDevices or getUserMedia not supported!');
 }else{
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+    }).then(function(stream){
+
+    }).catch(function(err){
+    
+    });
+
     navigator.mediaDevices.enumerateDevices()
         .then(function(devices){
             devices.forEach(function(device){
