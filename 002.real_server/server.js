@@ -20,5 +20,5 @@ var https_options = {
     cert: fs.readFileSync('/etc/letsencrypt/live/rtc.captainwong.cn/fullchain.pem')
 }
 
-var https_server = https.createServer(https_options);
+var https_server = https.createServer(https_options, app);
 https_server.listen(10443, '0.0.0.0');
